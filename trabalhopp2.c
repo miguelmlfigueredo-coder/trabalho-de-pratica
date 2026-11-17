@@ -3,6 +3,9 @@
 int assentos[3][5] = {0};
 float precos[3];
 int opcao, assento, sessao;
+int sessao, assento;
+int livres, reservados;
+float valorSessao, totalGeral;
 
 int main() {
 
@@ -40,10 +43,56 @@ int main() {
                 }
             }
 
-        } else if (opcao == 3) {
-            //parte do thiago
-        } else if (opcao == 4) {
-            //parte do thiago
+} else if (opcao == 3) {
+    printf("\nDigite o numero da sessao (1 a 3): ");
+    scanf("%d", &sessao);
+
+    printf("Digite o numero do assento (1 a 5): ");
+    scanf("%d", &assento);
+
+    if (sessao < 1 || sessao > 3) {
+        printf("Sessao invalida!\n");
+
+    } else if (assento < 1 || assento > 5) {
+        printf("Assento invalido!\n");
+
+    } else if (assentos[sessao - 1][assento - 1] == 1) {
+        assentos[sessao - 1][assento - 1] = 0;
+        printf("Reserva cancelada com sucesso!\n");
+
+    } else {
+        printf("Nao existe reserva nesse assento!\n");
+    }
+} else if (opcao == 4) {
+    
+    totalGeral = 0;
+
+    printf("\n===== RESUMO DAS SESSOES =====\n");
+
+    for (int i = 0; i < 3; i++) {        
+        livres = 0;
+        reservados = 0;
+
+        for (int j = 0; j < 5; j++) {
+
+            if (assentos[i][j] == 0) {
+                livres++;
+            } else {
+                reservados++;
+            }
+        }
+
+        valorSessao = reservados * precos[i];
+        totalGeral += valorSessao;
+
+        printf("\nSessao %d:\n", i + 1);
+        printf("Assentos livres: %d\n", livres);
+        printf("Assentos reservados: %d\n", reservados);
+        printf("Valor das reservas: R$ %.2f\n", valorSessao);
+    }
+
+    printf("\nTotal geral das reservas: R$ %.2f\n", totalGeral);
+}
         } else if (opcao == 0) {
             printf("Encerrando o programa... \n");
         } else {
