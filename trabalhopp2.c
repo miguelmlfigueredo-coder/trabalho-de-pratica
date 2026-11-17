@@ -1,0 +1,56 @@
+#include <stdio.h>
+
+int assentos[3][5] = {0};
+float precos[3];
+int opcao, assento, sessao;
+
+int main() {
+
+    do {
+        printf("\n===== MENU =====\n");
+        printf("1 - Mostrar mapa de assentos\n");
+        printf("2 - Reservar assento\n");
+        printf("3 - Cancelar Reserva\n");
+        printf("4 - Mostrar resumo das sessoes\n");
+        printf("0 - Encerrar\n");
+        printf("Escolha uma opcao: ");
+        scanf("%d", &opcao);
+
+        if (opcao == 1) {
+            //parte de alguem
+        } else if (opcao == 2) {
+
+            printf("\n--- RESERVAR ASSENTO ---\n");
+            printf("Numero da sessao 1 a 3: ");
+            scanf("%d", &sessao);
+            printf("Numero do assento 1 a 5: ");
+            scanf("%d", &assento);
+
+            if (sessao < 1 || sessao > 3) {
+                printf("Sessao invalida! Escolha uma sessao entre 1 e 3. \n");
+            } else if (assento < 1 || assento > 5) {
+                printf("Assento invalido! Escolha um assento entre 1 e 5. \n");
+            } else {
+                if (assentos[sessao-1][assento-1] == 0) {
+                    assentos[sessao-1][assento-1] = 1;
+                    printf("Assento %d da sessao %d reservado com sucesso! \n", assento, sessao);
+                    printf("Preco do ingresso: R$ %.2f\n", precos[sessao-1]);
+                } else {
+                    printf("Assento %d da sessao %d ja esta reservado! \n", assento, sessao);
+                }
+            }
+
+        } else if (opcao == 3) {
+            //parte do thiago
+        } else if (opcao == 4) {
+            //parte do thiago
+        } else if (opcao == 0) {
+            printf("Encerrando o programa... \n");
+        } else {
+            printf("Opcao invalida! Tente novamente. \n");
+        }
+
+    } while (opcao != 0);
+
+    return 0;
+}
