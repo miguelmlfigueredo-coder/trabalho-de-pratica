@@ -1,13 +1,37 @@
 #include <stdio.h>
 
-int assentos[3][5] = {0};
+int assentos [3][5] = {
+		{0, 0, 0, 0, 0},
+		{0, 0, 0, 0, 0},
+		{0, 0, 0, 0, 0}
+	};
 float precos[3];
 int opcao, assento, sessao;
-int sessao, assento;
 int livres, reservados;
 float valorSessao, totalGeral;
+int linha;
+int coluna;
+int i1;
+int i;
 
 int main() {
+    
+
+for(i1 =0; i1 < 3; i1++){
+		do {
+			printf("Qual e o preco da sessao %d: ", i1 + 1);
+			scanf("%f", &precos[i1]);
+			if (precos[i1] <= 0){
+				printf("Valor invalido por favor digite novamnete\n");
+			}
+			
+		}while(precos[i1]<=0);
+		
+	}
+	for (i =0; i < 3; i++){
+		
+		printf("Os precos sao %.2f\n", precos[i]);
+	}
 
     do {
         printf("\n===== MENU =====\n");
@@ -20,7 +44,28 @@ int main() {
         scanf("%d", &opcao);
 
         if (opcao == 1) {
-            //parte de alguem
+            
+		printf("\n");
+		printf(" Assento");
+		
+	for(coluna =0; coluna <5;coluna++){
+		printf("%5d", coluna + 1);
+	}
+	printf("\n");
+	
+	for (linha =0; linha < 3; linha++){
+		printf("Sessao %d", linha + 1);
+	for(coluna =0; coluna <5;coluna++){
+		printf("%5d", assentos[linha][coluna]);
+	}
+		
+		
+	printf("\n");	
+		
+	}
+    
+	printf("\n0 = livre e 1 = reservado\n");	
+	
         } else if (opcao == 2) {
 
             printf("\n--- RESERVAR ASSENTO ---\n");
@@ -92,14 +137,14 @@ int main() {
     }
 
     printf("\nTotal geral das reservas: R$ %.2f\n", totalGeral);
-}
+
         } else if (opcao == 0) {
             printf("Encerrando o programa... \n");
         } else {
             printf("Opcao invalida! Tente novamente. \n");
         }
 
-    } while (opcao != 0);
+    } while(opcao != 0);
 
     return 0;
 }
